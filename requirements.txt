@@ -3,6 +3,5 @@ requests
 beautifulsoup4
 langchain-groq
 langchain-core
-langchain-document-loaders
 langchain-google-genai
 langchain-chains
