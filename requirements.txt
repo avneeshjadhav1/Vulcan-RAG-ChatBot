@@ -6,3 +6,6 @@ langchain-groq
 langchain-core
 langchain-google-genai
 langchain-community
+faiss-gpu
+faiss-cpu
+pypdf
