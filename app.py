@@ -16,8 +16,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 # Load environment variables for API keys
-groq_api_key = os.getenv('GROQ_API_KEY')
-google_api_key = os.getenv("GOOGLE_API_KEY")
+groq_api_key = "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"
+google_api_key = "AIzaSyBh-9JgI2cukvSy0Db3jIxAFvheYAvWWrA"
 
 if not groq_api_key or not google_api_key:
     st.error("API keys for Groq and Google are required.")
