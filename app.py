@@ -174,6 +174,12 @@ for message in range(0, len(st.session_state.history), 2):
 
 
 
+# Ensure temp directory exists
+if not os.path.exists("temp"):
+    os.makedirs("temp")
+
+
+
 # Chat modes
 if option == "Normal Chat":
     
