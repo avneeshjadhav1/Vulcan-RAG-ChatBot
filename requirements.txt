@@ -5,3 +5,4 @@ beautifulsoup4
 langchain-groq
 langchain-core
 langchain-google-genai
+langchain-vectorstores
