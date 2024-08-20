@@ -1,7 +1,6 @@
 faiss-cpu
 groq
 langchain-groq
-PyPDF2
 langchain_google_genai
 langchain
 streamlit
@@ -9,7 +8,6 @@ langchain_community
 python-dotenv
 pypdf
 google-cloud-aiplatform>=1.38
-time
 base64
 beautifulsoup4
 langchain-core
