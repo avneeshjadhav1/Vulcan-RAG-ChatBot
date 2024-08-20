@@ -126,9 +126,7 @@ with st.sidebar:
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgMGgtMTRjLTIuNzYxIDAtNSAyLjIzOS01IDV2MTRjMCAyLjc2MSAyLjIzOSA1IDUgNWgxNGMyLjc2MiAwIDUtMi4yMzkgNS01di0xNGMwLTIuNzYxLTIuMjM4LTUtNS01em0tMTEgMTloLTN2LTExaDN2MTF6bS0xLjUtMTIuMjY4Yy0uOTY2IDAtMS43NS0uNzktMS43NS0xLjc2NHMuNzg0LTEuNzY0IDEuNzUtMS43NjQgMS43NS43OSAxLjc1IDEuNzY0LS43ODMgMS43NjQtMS43NSAxLjc2NHptMTMuNSAxMi4yNjhoLTN2LTUuNjA0YzAtMy4zNjgtNC0zLjExMy00IDB2NS42MDRoLTN2LTExaDN2MS43NjVjMS4zOTYtMi41ODYgNy0yLjc3NyA3IDIuNDc2djYuNzU5eiIvPjwvc3ZnPg==">
 
     </a>
-    """.format(
-        base64.b64encode(open("LinkedIn Logo.svg", "rb").read()).decode()
-    ),
+    """,
     unsafe_allow_html=True,
     )
     
@@ -168,19 +166,13 @@ if 'history' not in st.session_state:
 for message in range(0, len(st.session_state.history), 2):
         st.write("🔸𝗬𝗼𝘂:")
         st.write(st.session_state.history[message][:])
+        st.write("")
         if(message+1 < len(st.session_state.history)):
             st.write("🔹𝗟𝗟𝗠:")
             st.write(st.session_state.history[message+1][:])
-            #st.write("")
             st.divider()
 
 
-
-# Ensure temp directory exists
-if not os.path.exists("temp"):
-    os.makedirs("temp")
-    
-    
 
 # Chat modes
 if option == "Normal Chat":
@@ -193,6 +185,7 @@ if option == "Normal Chat":
             
             st.write("🔸𝗬𝗼𝘂:")
             st.write(question)
+            st.write("")
             st.session_state.history.append(f"{question}")
             
             document_chain = create_stuff_documents_chain(llm, prompt_template)
@@ -223,6 +216,7 @@ elif option == "Upload Document":
                 
                 st.write("🔸𝗬𝗼𝘂:")
                 st.write(question)
+                st.write("")
                 st.session_state.history.append(f"{question}")
                 
                 document_chain = create_stuff_documents_chain(llm, prompt_template)
@@ -256,6 +250,7 @@ elif option == "Scrape Website":
                 
                 st.write("🔸𝗬𝗼𝘂:")
                 st.write(question)
+                st.write("")
                 st.session_state.history.append(f"{question}")
                 
                 document_chain = create_stuff_documents_chain(llm, prompt_template)
