@@ -1,7 +1,6 @@
 import os
 import time
 import random
-import base64
 import requests
 import streamlit as st
 from io import StringIO
@@ -157,9 +156,6 @@ with st.sidebar:
 
 # Initialize the LLM
 llm = ChatGroq(groq_api_key=groq_api_key, model_name=selected_model)
-st.write("GROQ API KEY:", os.environ["GROQ_API_KEY"])
-st.write("GROQ API KEY:", groq_api_key)
-st.write("GROQ API KEY INDEX:", groq_key_index)
 
 # Define the prompt template with chat memory
 prompt_template = ChatPromptTemplate.from_template(
@@ -226,9 +222,6 @@ if option == "Normal Chat":
                     
             st.write("🔹𝗟𝗟𝗠:")
             st.write_stream(StringIO(response))
-            st.write("GOOGLE EMBEDDINGS API KEY:", os.environ["GOOGLE_API_KEY"])
-            st.write("GOOGLE EMBEDDINGS API KEY:", google_api_key)
-            st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
             st.write("Response time:", time.process_time()-start)
             st.session_state.history.append(f"{response}")
             
@@ -262,9 +255,6 @@ elif option == "Upload Document":
                 
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
-                st.write("GOOGLE EMBEDDINGS API KEY:", os.environ["GOOGLE_API_KEY"])
-                st.write("GOOGLE EMBEDDINGS API KEY:", google_api_key)
-                st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
                 st.write("Response time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
@@ -300,9 +290,6 @@ elif option == "Scrape Website":
                 
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
-                st.write("GOOGLE EMBEDDINGS API KEY:", os.environ["GOOGLE_API_KEY"])
-                st.write("GOOGLE EMBEDDINGS API KEY:", google_api_key)
-                st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
                 st.write("Response time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
