@@ -1,5 +1,6 @@
 import os
 import time
+import random
 import base64
 import requests
 import streamlit as st
@@ -16,14 +17,35 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 # Load environment variables for API keys
-groq_api_key = "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"
-google_api_key = "AIzaSyBh-9JgI2cukvSy0Db3jIxAFvheYAvWWrA"
+
+#Distrubuting api calls for GROQ Inferencing
+groq_key_dict = {1 : "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",
+                2 : "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",
+                3 : "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",
+                4 : "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",
+                5 : "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"
+                }
+groq_key_index = random.randint(1, 5)
+groq_api_key = groq_key_dict[groq_key_index]
+
+
+#Distrubuting api calls for Google Embeddings
+google_embeddings_key_dict = {1 : "AIzaSyBh-9JgI2cukvSy0Db3jIxAFvheYAvWWrA",
+                              2 : "AIzaSyClrQxnq6tHP6l8M2GDdQJ9NhGruwgwYP8",
+                              3 : "AIzaSyDoayRBBKUExDc62uyqLOZtiUm5t3Kj3fs",
+                              4 : "AIzaSyDA97Y1lZYcESEbKNN4HzXOyu4RkTanp8U",
+                              5 : "AIzaSyDjYPlT5Rrg8OWJeKMSByM27JI-dG52VP4"
+                              }
+google_embeddings_key_index = random.randint(1, 5)
+google_api_key = google_embeddings_key_dict[google_embeddings_key_index]
+
+
 
 if not groq_api_key or not google_api_key:
     st.error("API keys for Groq and Google are required.")
     st.stop()
 
-os.environ["GOOGLE_API_KEY"] = google_api_key
+#os.environ["GOOGLE_API_KEY"] = google_api_key
 
 
 
@@ -177,7 +199,7 @@ for message in range(0, len(st.session_state.history), 2):
 # Ensure temp directory exists
 if not os.path.exists("temp"):
     os.makedirs("temp")
-
+    
 
 
 # Chat modes
@@ -200,6 +222,8 @@ if option == "Normal Chat":
                     
             st.write("🔹𝗟𝗟𝗠:")
             st.write_stream(StringIO(response))
+            st.write("GROQ API KEY INDEX:", groq_key_index)
+            st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
             st.write("Response time:", time.process_time()-start)
             st.session_state.history.append(f"{response}")
             
@@ -233,6 +257,8 @@ elif option == "Upload Document":
                 
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
+                st.write("GROQ API KEY INDEX:", groq_key_index)
+                st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
                 st.write("Response time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
@@ -268,6 +294,8 @@ elif option == "Scrape Website":
                 
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
+                st.write("GROQ API KEY INDEX:", groq_key_index)
+                st.write("GOOGLE EMBEDDINGS API KEY INDEX:", google_embeddings_key_index)
                 st.write("Response time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
