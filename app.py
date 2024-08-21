@@ -15,8 +15,6 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 
-# Load environment variables for API keys
-
 #Distrubuting api calls for GROQ Inferencing
 groq_key_dict = {1 : "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",
                 2 : "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",
@@ -43,7 +41,8 @@ google_api_key = google_embeddings_key_dict[google_embeddings_key_index]
 if not groq_api_key or not google_api_key:
     st.error("API keys for Groq and Google are required.")
     st.stop()
-    
+
+# Load API keys to environment variables 
 os.environ["GROQ_API_KEY"] = groq_api_key
 os.environ["GOOGLE_API_KEY"] = google_api_key
 
