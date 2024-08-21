@@ -45,7 +45,7 @@ if not groq_api_key or not google_api_key:
     st.error("API keys for Groq and Google are required.")
     st.stop()
 
-#os.environ["GOOGLE_API_KEY"] = google_api_key
+os.environ["GOOGLE_API_KEY"] = google_api_key
 
 
 
