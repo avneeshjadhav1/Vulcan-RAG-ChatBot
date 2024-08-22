@@ -186,7 +186,7 @@ if 'history' not in st.session_state:
 #Display History
 for message in range(0, len(st.session_state.history), 2):
         st.write("🔸𝗬𝗼𝘂:")
-        st.write(st.session_state.history[message][:])
+        st.subheader(st.session_state.history[message][:])
         st.write("")
         if(message+1 < len(st.session_state.history)):
             st.write("🔹𝗟𝗟𝗠:")
@@ -211,7 +211,7 @@ if option == "Normal Chat":
             start=time.process_time()
             
             st.write("🔸𝗬𝗼𝘂:")
-            st.write(question)
+            st.subheader(question)
             st.write("")
             st.session_state.history.append(f"{question}")
             
@@ -239,7 +239,7 @@ elif option == "Upload Document":
                 start=time.process_time()
                 
                 st.write("🔸𝗬𝗼𝘂:")
-                st.write(question)
+                st.subheader(question)
                 st.write("")
                 st.session_state.history.append(f"{question}")
                 
@@ -272,7 +272,7 @@ elif option == "Scrape Website":
                 start=time.process_time()
                 
                 st.write("🔸𝗬𝗼𝘂:")
-                st.write(question)
+                st.subheader(question)
                 st.write("")
                 st.session_state.history.append(f"{question}")
                 
