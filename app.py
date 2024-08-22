@@ -16,31 +16,35 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 #Distrubuting api calls for GROQ Inferencing
-groq_key_dict = {1 : "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",
-                2 : "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",
-                3 : "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",
-                4 : "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",
-                5 : "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"
+groq_key_dict = {   1 : "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",
+                    2 : "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",
+                    3 : "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",
+                    4 : "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",
+                    5 : "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",
+                    6 : "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",
+                    7 : "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"
                 }
-groq_key_index = random.randint(1, 5)
+groq_key_index = random.randint(1, 7)
 groq_api_key = groq_key_dict[groq_key_index]
 
 
 #Distrubuting api calls for Google Embeddings
-google_embeddings_key_dict = {1 : "AIzaSyBh-9JgI2cukvSy0Db3jIxAFvheYAvWWrA",
-                              2 : "AIzaSyClrQxnq6tHP6l8M2GDdQJ9NhGruwgwYP8",
-                              3 : "AIzaSyDoayRBBKUExDc62uyqLOZtiUm5t3Kj3fs",
-                              4 : "AIzaSyDA97Y1lZYcESEbKNN4HzXOyu4RkTanp8U",
-                              5 : "AIzaSyDjYPlT5Rrg8OWJeKMSByM27JI-dG52VP4"
-                              }
-google_embeddings_key_index = random.randint(1, 5)
+google_embeddings_key_dict =    {   1 : "AIzaSyBh-9JgI2cukvSy0Db3jIxAFvheYAvWWrA",
+                                    2 : "AIzaSyClrQxnq6tHP6l8M2GDdQJ9NhGruwgwYP8",
+                                    3 : "AIzaSyDoayRBBKUExDc62uyqLOZtiUm5t3Kj3fs",
+                                    4 : "AIzaSyDA97Y1lZYcESEbKNN4HzXOyu4RkTanp8U",
+                                    5 : "AIzaSyDjYPlT5Rrg8OWJeKMSByM27JI-dG52VP4",
+                                    6 : "AIzaSyA0Bq8_6coTew-6stME-J3mRe84uiBUTOU",
+                                    7 : "AIzaSyC1eqTc-ZY3ff6TtLGV4GI3wbiyMmlXHoI"
+                                }
+google_embeddings_key_index = random.randint(1, 7)
 google_api_key = google_embeddings_key_dict[google_embeddings_key_index]
-
 
 
 if not groq_api_key or not google_api_key:
     st.error("API keys for Groq and Google are required.")
     st.stop()
+
 
 # Load API keys to environment variables 
 os.environ["GROQ_API_KEY"] = groq_api_key
@@ -78,6 +82,7 @@ def scrape_website(url):
     return [Document(page_content=text)]
 
 
+
 #App Title
 st.logo("VulcanLogo.png", icon_image="VulcanLogo.png")
 
@@ -85,6 +90,7 @@ st.set_page_config(page_title="Vulcan v1", page_icon="VulcanLogo1.jpeg")
 
 st.title("Vulcan v1 DEPLOYED🚀")
 st.header("Just Ask.")
+st.write("")
 
 
 
@@ -148,8 +154,7 @@ with st.sidebar:
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgMGgtMTRjLTIuNzYxIDAtNSAyLjIzOS01IDV2MTRjMCAyLjc2MSAyLjIzOSA1IDUgNWgxNGMyLjc2MiAwIDUtMi4yMzkgNS01di0xNGMwLTIuNzYxLTIuMjM4LTUtNS01em0tMTEgMTloLTN2LTExaDN2MTF6bS0xLjUtMTIuMjY4Yy0uOTY2IDAtMS43NS0uNzktMS43NS0xLjc2NHMuNzg0LTEuNzY0IDEuNzUtMS43NjQgMS43NS43OSAxLjc1IDEuNzY0LS43ODMgMS43NjQtMS43NSAxLjc2NHptMTMuNSAxMi4yNjhoLTN2LTUuNjA0YzAtMy4zNjgtNC0zLjExMy00IDB2NS42MDRoLTN2LTExaDN2MS43NjVjMS4zOTYtMi41ODYgNy0yLjc3NyA3IDIuNDc2djYuNzU5eiIvPjwvc3ZnPg==">
 
     </a>
-    """,
-    unsafe_allow_html=True,
+    """, unsafe_allow_html=True,
     )
     
     
@@ -222,7 +227,7 @@ if option == "Normal Chat":
                     
             st.write("🔹𝗟𝗟𝗠:")
             st.write_stream(StringIO(response))
-            st.write("Response time:", time.process_time()-start)
+            st.write("Response Time:", time.process_time()-start)
             st.session_state.history.append(f"{response}")
             
     except Exception as e:
@@ -255,7 +260,7 @@ elif option == "Upload Document":
                 
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
-                st.write("Response time:", time.process_time()-start)
+                st.write("Response Time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
         except Exception as e:
@@ -286,10 +291,9 @@ elif option == "Scrape Website":
                 
                 response = document_chain.invoke({'context': relevant_docs, 'history': "\n".join(st.session_state.history), 'input': question})
                 
-                
                 st.write("🔹𝗟𝗟𝗠:")
                 st.write_stream(StringIO(response))
-                st.write("Response time:", time.process_time()-start)
+                st.write("Response Time:", time.process_time()-start)
                 st.session_state.history.append(f"{response}")
                 
         except Exception as e:
