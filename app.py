@@ -9,7 +9,7 @@ from langchain_groq import ChatGroq
 from langchain.schema import Document
 from langchain.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain.document_loaders import PyPDFLoader, TextLoader, CSVLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
@@ -106,7 +106,7 @@ with st.sidebar:
     option = st.selectbox("Actions:", ["Normal Chat", "Upload Document", "Scrape Website"])
     
     if option=="Upload Document":
-        uploaded_file = st.file_uploader("Upload your document (PDF or TXT)", type=["pdf", "txt"])
+        uploaded_file = st.file_uploader("Upload your document:", type=["pdf", "txt", "csv"])
         try:
             if uploaded_file:
                 docs = load_uploaded_document(uploaded_file)
@@ -233,9 +233,6 @@ elif option == "Upload Document":
     if uploaded_file:
         
         try:
-            
-            embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-            vectors = FAISS.from_documents(docs, embeddings)
 
             question = st.chat_input("Enter your question...")
             if question:
@@ -245,6 +242,9 @@ elif option == "Upload Document":
                 st.write(question)
                 st.write("")
                 st.session_state.history.append(f"{question}")
+                
+                embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+                vectors = FAISS.from_documents(docs, embeddings)
                 
                 document_chain = create_stuff_documents_chain(llm, prompt_template)
                 retriever = vectors.as_retriever()
@@ -267,10 +267,6 @@ elif option == "Scrape Website":
         
         try:
             
-            embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
-            vectors = FAISS.from_documents(docs, embeddings)
-
-            
             question = st.chat_input("Enter your question...")
             if question:
                 start=time.process_time()
@@ -279,6 +275,9 @@ elif option == "Scrape Website":
                 st.write(question)
                 st.write("")
                 st.session_state.history.append(f"{question}")
+                
+                embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+                vectors = FAISS.from_documents(docs, embeddings)
                 
                 document_chain = create_stuff_documents_chain(llm, prompt_template)
                 retriever = vectors.as_retriever()
