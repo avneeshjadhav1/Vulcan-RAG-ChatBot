@@ -9,8 +9,8 @@ from langchain_groq import ChatGroq
 from langchain.schema import Document
 from langchain.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
-from langchain.document_loaders import PyPDFLoader, TextLoader, CSVLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain.document_loaders import PyPDFLoader, TextLoader, CSVLoader
 from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
