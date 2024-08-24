@@ -232,6 +232,7 @@ if option == "Normal Chat":
             
     except Exception as e:
             st.error(f"An error occurred: {e}")
+            st.error(f"Refresh page, switch llm model and try again. [Chat history will be cleared]")
             
 
 elif option == "Upload Document":
@@ -265,6 +266,7 @@ elif option == "Upload Document":
                 
         except Exception as e:
             st.error(f"An error occurred: {e}")
+            st.error(f"Refresh page, switch llm model and try again. [Chat history will be cleared]")
 
 
 elif option == "Scrape Website":
@@ -298,3 +300,4 @@ elif option == "Scrape Website":
                 
         except Exception as e:
             st.error(f"An error occurred: {e}")
+            st.error(f"Refresh page, switch llm model and try again. [Chat history will be cleared]")
