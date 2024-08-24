@@ -1,4 +1,4 @@
-# Vulcan-v1-RAG-ChatBot
+# Vulcan-RAG-ChatBot
 
 Project by Avneesh Jadhav
 
