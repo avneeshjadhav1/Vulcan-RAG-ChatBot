@@ -2,4 +2,4 @@
 
 Project by Avneesh Jadhav
 
-Visit: https://vulcan.streamlit.app
+Use App: https://vulcan.streamlit.app
