@@ -15,17 +15,8 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 
-#Distrubuting api calls for GROQ Inferencing
-groq_key_dict = {   1 : "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",
-                    2 : "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",
-                    3 : "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",
-                    4 : "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",
-                    5 : "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",
-                    6 : "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",
-                    7 : "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"
-                }
-groq_key_index = random.randint(1, 7)
-groq_api_key = groq_key_dict[groq_key_index]
+#Api key for GROQ Inferencing
+groq_api_key = "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"
 
 
 #Distrubuting api calls for Google Embeddings
