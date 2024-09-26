@@ -86,7 +86,7 @@ st.write("")
 
 
 #Setting default values of glabal variables
-selected_model = "Llama-3.1-8b-instant"
+selected_model = "Llama-3.2-11b-text-preview"
 
 option = "Normal Chat"
 
@@ -95,7 +95,7 @@ option = "Normal Chat"
 with st.sidebar:
 
     st.title("Select Model:")
-    selected_model = st.sidebar.selectbox('Choose:', ["Llama-3.1-8b-instant", "Llama-3.1-70b-versatile", "Mixtral-8x7b-32768", "Gemma2-9b-it"], key='selected_model')
+    selected_model = st.sidebar.selectbox('Choose:', ["Llama-3.2-11b-text-preview", "Llama-3.2-90b-text-preview", "Llama-3.2-3b-preview", "Llama-3.2-1b-preview", "Llama-3.1-8b-instant", "Llama-3.1-70b-versatile", "Mixtral-8x7b-32768", "Gemma2-9b-it"], key='selected_model')
     
     
     st.divider()
@@ -156,7 +156,7 @@ llm = ChatGroq(groq_api_key=groq_api_key, model_name=selected_model)
 # Define the prompt template with chat memory
 prompt_template = ChatPromptTemplate.from_template(
 """
-You are an AI assistant. Answer the questions based on the provided context and the previous conversation.
+You are an AI assistant. Answer the questions based on the provided context and the previous conversation without explicitly mentioning that you are answering based on on the provided context and the previous conversation.
 If any question is not related to the context or history, directly provide your own answer without mentioning about the context or history.
 Provide the most accurate response based on the context and conversation history.
 If any question is not related to the context or history, provide the most accurate response based on your own knowledge.
