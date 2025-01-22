@@ -95,7 +95,7 @@ option = "Normal Chat"
 with st.sidebar:
 
     st.title("Select Model:")
-    selected_model = st.sidebar.selectbox('Choose:', ["Llama-3.2-11b-text-preview", "Llama-3.2-90b-text-preview", "Llama-3.2-3b-preview", "Llama-3.2-1b-preview", "Llama-3.1-8b-instant", "Llama-3.1-70b-versatile", "Mixtral-8x7b-32768", "Gemma2-9b-it"], key='selected_model')
+    selected_model = st.sidebar.selectbox('Choose:', ["Llama-3.3-70b-versatile",  "Mixtral-8x7b-32768", "Gemma2-9b-it"], key='selected_model')
     
     
     st.divider()
