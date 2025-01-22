@@ -75,7 +75,7 @@ def scrape_website(url):
 
 
 #App Title
-st.logo("VulcanLogo.png", icon_image="VulcanLogo.png")
+st.logo("VulcanLogo.png", size="large", icon_image="VulcanLogo.png")
 
 st.set_page_config(page_title="Vulcan v1", page_icon="VulcanLogo1.jpeg")
 
@@ -86,7 +86,7 @@ st.write("")
 
 
 #Setting default values of glabal variables
-selected_model = "Llama-3.2-11b-text-preview"
+selected_model = "Llama-3.3-70b-versatile"
 
 option = "Normal Chat"
 
