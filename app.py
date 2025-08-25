@@ -16,7 +16,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 
 
 #Api key for GROQ Inferencing
-groq_api_key = "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"
+groq_api_key = "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"
 
 
 #Distrubuting api calls for Google Embeddings
@@ -292,3 +292,4 @@ elif option == "Scrape Website":
         except Exception as e:
             st.error(f"An error occurred: {e}")
             st.error(f"Refresh page, switch llm model and try again. [Chat history will be cleared]")
+
